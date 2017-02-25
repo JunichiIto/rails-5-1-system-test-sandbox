@@ -22,9 +22,9 @@ class UsersTest < ApplicationSystemTestCase
     click_button 'Update User'
 
     # 正しく更新されていること（＝画面の表示が正しいこと）を検証する
-    assert has_content?('User was successfully updated.')
-    assert has_content?('いとう')
-    assert has_content?('158-0083')
-    assert has_content?('東京都世田谷区奥沢')
+    assert_text 'User was successfully updated.'
+    assert_text 'いとう'
+    assert_text '158-0083'
+    assert_text '東京都世田谷区奥沢'
   end
 end
