@@ -183,7 +183,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.0.rc1)
   sass-rails!
-  selenium-webdriver
+  selenium-webdriver (~> 3.3.0)
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
