@@ -1,0 +1,24 @@
+language: ruby
+rvm:
+  - 2.4.0
+cache: bundler
+bundler_args: --without production --deployment
+#addons:
+#  postgresql: "9.3"
+before_install:
+  - gem install bundler --pre
+#before_script:
+#  - psql -c 'create database travis_ci_test;' -U postgres
+#  - cp config/database.yml.travis config/database.yml
+script:
+  - bin/rails test
+  - bin/rails test:system
+#debug
+#script: "RAILS_ENV=test bundle exec rake test:ci --trace"
+#notifications:
+#  webhooks:
+#    urls:
+#      - https://webhooks.gitter.im/e/c57bd85cc9e2aba2d679
+#    on_success: change
+#    on_failure: always
+#    on_start: false     # default: false
