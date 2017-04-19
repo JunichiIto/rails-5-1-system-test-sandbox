@@ -8,7 +8,7 @@ addons:
     sources:
       - google-chrome
     packages:
-      - google-chrome-unstable
+      - google-chrome-stable
 
 before_install:
   - gem install bundler --pre
