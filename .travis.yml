@@ -17,6 +17,7 @@ before_script:
   - unzip chromedriver_linux64.zip
   - sudo cp chromedriver /usr/local/bin/.
   - sudo chmod +x /usr/local/bin/chromedriver
+  - which chromedriver
 script:
   - bin/rails test
   - bin/rails test:system
