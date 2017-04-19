@@ -15,8 +15,9 @@ before_install:
 before_script:
   - wget http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
-  - sudo cp chromedriver /usr/local/bin/.
-  - sudo chmod +x /usr/local/bin/chromedriver
+  - sudo cp chromedriver /usr/bin/.
+  - sudo chmod +x /usr/bin/chromedriver
+  - echo $PATH
   - which chromedriver
 script:
   - bin/rails test
