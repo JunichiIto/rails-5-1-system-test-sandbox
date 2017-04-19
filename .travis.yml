@@ -14,6 +14,9 @@ bundler_args: --without production --deployment
 
 before_install:
   - gem install bundler --pre
+
+  - which google-chrome
+  - google-chrome --version
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start
@@ -21,6 +24,8 @@ before_install:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
+  - which google-chrome
+  - google-chrome --version
 
   - wget http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
@@ -28,8 +33,6 @@ before_install:
   - sudo chmod +x /usr/bin/chromedriver
   - echo $PATH
   - which chromedriver
-
-  - google-chrome --version
 script:
   - bin/rails test
   - bin/rails test:system
