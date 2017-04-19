@@ -3,13 +3,21 @@ rvm:
   - 2.4.0
 cache: bundler
 bundler_args: --without production --deployment
-#addons:
-#  postgresql: "9.3"
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-dev
+
 before_install:
   - gem install bundler --pre
-#before_script:
-#  - psql -c 'create database travis_ci_test;' -U postgres
-#  - cp config/database.yml.travis config/database.yml
+before_script:
+  - wget http://chromedriver.storage.googleapis.com/2.29/chromedriver_linux64.zip
+  - unzip chromedriver_linux64.zip
+  - sudo apt-get --only-upgrade install google-chrome-dev
+  - sudo cp chromedriver /usr/local/bin/.
+  - sudo chmod +x /usr/local/bin/chromedriver
 script:
   - bin/rails test
   - bin/rails test:system
