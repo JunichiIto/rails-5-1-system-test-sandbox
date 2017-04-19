@@ -56,7 +56,8 @@ dependencies:
 ## Customize test commands
 test:
   override:
-    - bundle exec rspec
+    - rails test
+    - rails test:system
 #  post:
 #    - bundle exec brakeman -w2 -qz: # add an extra test type
 #        environment:
