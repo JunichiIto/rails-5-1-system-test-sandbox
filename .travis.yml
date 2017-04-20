@@ -17,7 +17,7 @@ before_install:
 
   - which google-chrome
   - google-chrome --version
-  - sudo dpkg -r google-chrome\*
+  - sudo dpkg -r google-chrome-
   - sudo dpkg -l google\*
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
