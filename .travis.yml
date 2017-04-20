@@ -5,12 +5,6 @@ rvm:
   - 2.4.0
 cache: bundler
 bundler_args: --without production --deployment
-#addons:
-#  apt:
-#    sources:
-#      - google-chrome
-#    packages:
-#      - google-chrome-stable
 
 before_install:
   - gem install bundler --pre
@@ -23,25 +17,15 @@ before_install:
   - sudo apt-get install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 #  - wget https://dl.google.com/linux/direct/google-chrome-unstable_current_amd64.deb
-  - google-chrome --version
   - sudo dpkg -i google-chrome*.deb
+#  - google-chrome --version
 
   - VERSION=$(curl http://chromedriver.storage.googleapis.com/LATEST_RELEASE)
   - wget http://chromedriver.storage.googleapis.com/$VERSION/chromedriver_linux64.zip
   - unzip chromedriver_linux64.zip
   - sudo cp chromedriver /usr/bin/.
   - sudo chmod +x /usr/bin/chromedriver
-  - echo $PATH
-  - which chromedriver
+#  - chromedriver -v
 script:
   - bin/rails test
   - bin/rails test:system
-#debug
-#script: "RAILS_ENV=test bundle exec rake test:ci --trace"
-#notifications:
-#  webhooks:
-#    urls:
-#      - https://webhooks.gitter.im/e/c57bd85cc9e2aba2d679
-#    on_success: change
-#    on_failure: always
-#    on_start: false     # default: false
