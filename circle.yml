@@ -33,6 +33,8 @@ machine:
 dependencies:
   pre:
     - sudo apt-get install fonts-migmix # http://journal.sooey.com/269
+    - google-chrome --version
+    - chromedriver -v
 #
 #  override:
 #    - bundle install: # note ':' here
