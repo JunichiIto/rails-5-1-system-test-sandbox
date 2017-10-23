@@ -1,7 +1,6 @@
 general:
   artifacts:
     - "tmp/capybara"
-
 machine:
   timezone:
     Asia/Tokyo
