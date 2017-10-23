@@ -12,6 +12,7 @@ test:
     - bundle exec rspec spec
 dependencies:
   pre:
+    # Install latest Chrome
     - sudo apt-get update
     - sudo apt-get install -y libappindicator1 fonts-liberation
     - export CHROME_BIN=/usr/bin/google-chrome
