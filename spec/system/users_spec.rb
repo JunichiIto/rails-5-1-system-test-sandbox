@@ -5,17 +5,17 @@ RSpec.describe 'Users', type: :system do
     @user = User.create!(name: 'いとう')
   end
 
-  it 'completes yubinbango automatically', js: true do
+  it 'completes yubinbango automatically with JS', js: true do
     # User編集画面を開く
     visit edit_user_path(@user)
 
     # Nameに"いとう"が入力されていることを検証する
-    expect(page).to have_field('Name', with: 'いとう')
+    expect(page).to have_field '名前', with: 'いとう'
 
     # 郵便番号を入力
-    fill_in 'Postal code', with: '158-0083'
+    fill_in '郵便番号', with: '158-0083'
     # 住所が自動入力されたことを検証する
-    expect(page).to have_field 'Address', with: '東京都世田谷区奥沢'
+    expect(page).to have_field '住所', with: '東京都世田谷区奥沢'
 
     # 更新実行
     click_button 'Update User'
@@ -32,12 +32,12 @@ RSpec.describe 'Users', type: :system do
     visit edit_user_path(@user)
 
     # Nameに"いとう"が入力されていることを検証する
-    expect(page).to have_field('Name', with: 'いとう')
+    expect(page).to have_field '名前', with: 'いとう'
 
     # 郵便番号を入力
-    fill_in 'Postal code', with: '158-0083'
+    fill_in '郵便番号', with: '158-0083'
     # 住所が自動入力されていないことを検証する
-    expect(page).to_not have_content '東京都世田谷区奥沢'
+    expect(page).to_not have_field '住所', with: '東京都世田谷区奥沢'
 
     # 更新実行
     click_button 'Update User'
