@@ -3,6 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.4.2-node-browsers
+      - image: selenium/standalone-chrome:latest
     working_directory: ~/rails-5-1-sandbox
     steps:
       - checkout
@@ -11,10 +12,6 @@ jobs:
           command: |
             sudo apt-get update
             sudo apt-get install -y libappindicator1 fonts-liberation
-            export CHROME_BIN=/usr/bin/google-chrome
-            wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-            sudo dpkg -i google-chrome*.deb
-
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "Gemfile.lock" }}
@@ -34,6 +31,9 @@ jobs:
           command: bundle exec rake db:create db:schema:load --trace
       - run:
           name: Run Tests
-          command: RAILS_ENV=test bundle exec rspec
+          command: |
+            bundle exec rspec --format progress \
+                            --out /tmp/test-results/rspec.xml \
+                            --format progress
       - store_test_results:
           path: /tmp/test-results
